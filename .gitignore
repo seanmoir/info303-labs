@@ -1,0 +1,12 @@
+**/.gradle
+**/build
+**/.nb-gradle
+*.jar
+*.zip
+
+# personal modifications
+**/.idea
+**/gradle
+**/gradlew
+**/gradlew.bat
+**/.vscode

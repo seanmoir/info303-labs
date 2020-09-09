@@ -1,0 +1,50 @@
+[
+	{
+		"SALE_ID" : 0,
+		"QUANTITY" : 1,
+		"PRICE" : 2,
+		"DISCOUNT" : 2,
+		"PAYMENT_TYPE" : "eftpos",
+		"USER_ID" : 0,
+		"CUSTOMER_ID" : 0,
+		"OUTLET_NAME" : "dunedin central",
+		"PRODUCT_ID" : 0,
+		"SALE_DATE" : "2001-11-10T11:00:00Z"
+	},
+	{
+		"SALE_ID" : 1,
+		"QUANTITY" : 1,
+		"PRICE" : 2,
+		"DISCOUNT" : 2,
+		"PAYMENT_TYPE" : "eftpos",
+		"USER_ID" : 0,
+		"CUSTOMER_ID" : 0,
+		"OUTLET_NAME" : "dunedin central",
+		"PRODUCT_ID" : 0,
+		"SALE_DATE" : "2001-11-11T11:00:00Z"
+	},
+	{
+		"SALE_ID" : 2,
+		"QUANTITY" : 1,
+		"PRICE" : 2,
+		"DISCOUNT" : 2,
+		"PAYMENT_TYPE" : "eftpos",
+		"USER_ID" : 1,
+		"CUSTOMER_ID" : 0,
+		"OUTLET_NAME" : "dunedin central",
+		"PRODUCT_ID" : 0,
+		"SALE_DATE" : "2001-11-11T11:00:00Z"
+	},
+	{
+		"SALE_ID" : 3,
+		"QUANTITY" : 1,
+		"PRICE" : 2,
+		"DISCOUNT" : 2,
+		"PAYMENT_TYPE" : "eftpos",
+		"USER_ID" : 2,
+		"CUSTOMER_ID" : 0,
+		"OUTLET_NAME" : "dunedin central",
+		"PRODUCT_ID" : 0,
+		"SALE_DATE" : "2001-11-11T11:00:00Z"
+	}
+]

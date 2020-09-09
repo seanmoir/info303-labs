@@ -1,0 +1,75 @@
+plugins {
+	id 'java'
+	id 'application'
+}
+
+repositories {
+	jcenter()
+}
+
+configurations {
+	// using the slf4j to unify the logging, so prevent clogging from being used
+	all*.exclude module:'commons-logging'
+}
+
+dependencies {
+	def camelVer = '2.24.3'
+	def activeMqVer = '5.15.12'
+	def slf4jVer = '1.7.30'
+	def logbackVer = '1.2.3'
+
+	// JMS
+	compile group: 'org.apache.camel', name: 'camel-jms', version: camelVer
+	compile group: 'org.apache.activemq', name: 'activemq-broker', version: activeMqVer
+
+	// JSON
+	compile group: 'org.apache.camel', name: 'camel-gson', version: camelVer
+
+	// Jetty
+	compile group: 'org.apache.camel', name: 'camel-jetty', version: camelVer
+
+	// Logging
+	compile group: 'ch.qos.logback', name: 'logback-classic', version: logbackVer
+	compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: slf4jVer
+	compile group: 'org.slf4j', name: 'jul-to-slf4j', version: slf4jVer
+
+	// activation
+	compile group: 'javax.activation', name: 'activation', version: '1.1.1'
+}
+
+run {
+	standardInput = System.in
+}
+
+task createMissingSourceDirs {
+	group = "Source Directories"
+	description = "Create all of the missing source directories for this project."
+	doFirst {
+		sourceSets.each { def sourceRoot ->
+			sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+				if(!sourceDir.dir.exists()) {
+					println "Creating ${sourceDir}"
+					mkdir sourceDir.dir
+				}
+			}
+		}
+	}
+}
+
+task deleteEmptySourceDirs {
+	group = "Source Directories"
+	description = "Delete all empty source directories."
+	doFirst {
+		sourceSets.each { def sourceRoot ->
+			sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+				if(sourceDir.dir.exists() && sourceDir.dir.isDirectory() && sourceDir.dir.list().length == 0) {
+					println "Removing empty ${sourceDir}"
+					sourceDir.dir.delete()
+				}
+			}
+		}
+	}
+
+}
+
+mainClassName="Main"

@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+}
+
+configurations {
+	// using slf4j to unify the logging, so prevent clogging from being used
+	all*.exclude module:'commons-logging'
+
+	// exclude unneeded CXF transitive dependencies
+	all*.exclude group: 'xml-resolver', module: 'xml-resolver'
+	all*.exclude group: 'org.apache.cxf', module:'cxf-rt-rs-security-oauth'
+	all*.exclude group: 'org.apache.cxf', module: 'cxf-rt-features-clustering'
+	all*.exclude group: 'org.apache.cxf', module: 'cxf-rt-ws-addr'
+}
+
+dependencies {
+	implementation project (':common')
+
+	def camelVer = '2.24.3'
+	def activeMqVer = '5.15.12'
+
+	// Camel JMS support
+	implementation group: 'org.apache.camel', name: 'camel-jms', version: camelVer
+	implementation group: 'org.apache.activemq', name: 'activemq-broker', version: activeMqVer
+
+	// Camel JSON support (via GSON)
+	implementation group: 'org.apache.camel', name: 'camel-gson', version: camelVer
+
+	// Camel Jetty support
+	implementation group: 'org.apache.camel', name: 'camel-jetty', version: camelVer
+
+	// Camel CXF support (for SOAP/RPC services)
+	implementation group: 'org.apache.camel', name: 'camel-cxf', version: camelVer
+	implementation group: 'javax.xml.ws', name: 'jaxws-api', version: '2.3.1'
+	implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
+
+	// Camel HTTP client support (for REST services)
+	implementation group: 'org.apache.camel', name: 'camel-http', version: camelVer
+
+	// Camel RMI support
+	implementation group: 'org.apache.camel', name: 'camel-rmi', version: camelVer
+
+	// Camel Email support
+	implementation group: 'org.apache.camel', name: 'camel-mail', version: camelVer
+}
+

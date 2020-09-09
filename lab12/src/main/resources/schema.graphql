@@ -1,0 +1,48 @@
+schema {
+	query: InventoryDetails
+}
+
+type InventoryDetails {
+
+	"""
+	The entire product catalogue.
+	"""
+	catalogue: [Product]
+
+	"""
+	The product matching the given ID.
+	"""
+	product(id: String): Product
+
+	"""
+	All products in the given category.
+	"""
+	category(category: String): [Product]
+
+	"""
+	Products that are due for reordering.
+	"""
+	reorder: [Product]
+}
+
+"""
+A product in the catalogue.
+"""
+type Product {
+	id: ID!
+	name: String!
+	category: String!
+	price: Float
+	description: String
+	stockLevel: StockLevel
+}
+
+"""
+Stock level and reordering details.
+"""
+type StockLevel {
+	currentStockLevel: Float
+	reorderThreshold: Float
+	reorderAmount: Float
+	supplier: String
+}

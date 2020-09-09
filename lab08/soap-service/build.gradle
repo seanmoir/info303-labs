@@ -1,0 +1,21 @@
+plugins {
+	id 'application'
+}
+
+dependencies {
+	implementation project (':common')
+
+	// Metro
+	implementation group: 'com.sun.xml.ws', name: 'jaxws-ri', version: '2.3.2'
+
+
+	/* testing dependencies */
+
+	testImplementation group: 'junit', name: 'junit', version: '4.13'
+}
+
+run {
+	standardInput = System.in
+}
+
+mainClassName = 'soap.SoapServer'
